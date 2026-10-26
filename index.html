@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RELOOP – ตลาดของมือสอง</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+ <div class="wrap nav">
+  <a href="#top" class="logo"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M22 10a9 9 0 0 0-15-3L5 9"/><path d="M5 4v5h5"/><path d="M6 18a9 9 0 0 0 15 3l2-2"/><path d="M23 24v-5h-5"/></svg><span>RELOOP</span></a>
+  <div class="menu"><a href="#top">หน้าหลัก</a><a href="#browse">สำรวจสินค้า</a><a href="#cats">หมวดหมู่</a></div>
+  <div class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="nq" type="search" placeholder="ค้นหาสินค้า" aria-label="ค้นหาสินค้า"></div>
+  <button class="ibtn" id="favBtn" aria-label="รายการโปรด"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.800-8 11-8 11z"/></svg><b id="fc">0</b></button>
+  <button class="btn ghost sell" onclick="toast('เปิดหน้าลงขายสินค้า (เดโม)')">ลงขายสินค้า</button>
+  <button class="btn login" onclick="toast('เข้าสู่ระบบ (เดโม)')">เข้าสู่ระบบ</button>
+  <button class="ibtn burger" id="bg" aria-label="เมนู"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+ </div>
+ <div class="mob" id="mob"><a href="#top">หน้าหลัก</a><a href="#browse">สำรวจสินค้า</a><a href="#cats">หมวดหมู่</a><a href="#" onclick="toast('เปิดหน้าลงขายสินค้า (เดโม)');return false">ลงขายสินค้า</a><a href="#" onclick="toast('เข้าสู่ระบบ (เดโม)');return false">เข้าสู่ระบบ</a></div>
+</nav>
+
+<header class="hero" id="top"><div class="wrap hg">
+ <div>
+  <h1>ของดีไม่จำเป็นต้องเป็นของใหม่</h1>
+  <p>ค้นพบของมือสองที่ใช่ ให้ของที่คุณไม่ได้ใช้ได้ไปต่อกับเจ้าของคนใหม่</p>
+  <div class="row"><a class="btn" href="#browse">สำรวจสินค้า</a><button class="btn ghost" onclick="toast('เริ่มลงขาย (เดโม)')">เริ่มลงขาย</button></div>
+ </div>
+ <div class="stage" id="stage"></div>
+</div></header>
+
+<section id="cats" style="padding-top:24px"><div class="wrap">
+ <div class="sh"><div><h2>เลือกดูตามหมวดหมู่</h2></div></div>
+ <div class="cats" id="catGrid"></div>
+</div></section>
+
+<section id="browse" style="background:var(--soft)"><div class="wrap">
+ <div class="sh"><div><h2>สินค้าแนะนำ</h2><p>คัดมาจากผู้ขายหลายคน ตรวจสภาพก่อนลงขาย</p></div></div>
+ <div class="bar">
+  <label>ค้นหา<input type="text" id="q" placeholder="ชื่อสินค้า"></label>
+  <label>หมวดหมู่<select id="fc2"></select></label>
+  <label>สภาพสินค้า<select id="fcond"><option value="">ทุกสภาพ</option><option>เหมือนใหม่</option><option>ดีมาก</option><option>ดี</option></select></label>
+  <label>ราคาไม่เกิน <span id="pv"></span><input type="range" id="pr" min="200" max="30000" step="100" value="30000"></label>
+  <label>เรียงตาม<select id="so"><option value="new">สินค้าล่าสุด</option><option value="asc">ราคาต่ำไปสูง</option><option value="desc">ราคาสูงไปต่ำ</option></select></label>
+ </div>
+ <div class="res" id="res"></div>
+ <div class="grid" id="grid"></div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="sh"><div><h2>สินค้ามาใหม่</h2><p>เพิ่งลงขายภายในสัปดาห์นี้</p></div></div>
+ <div class="grid" id="newGrid"></div>
+</div></section>
+
+<section style="padding-top:8px"><div class="wrap">
+ <div class="banner">
+  <div><h2>มีของที่ไม่ได้ใช้แล้วหรือเปล่า?</h2><p>เปลี่ยนสิ่งของที่คุณไม่ใช้ ให้กลายเป็นโอกาสสำหรับใครอีกคน</p><button class="btn" onclick="toast('เปิดหน้าลงขายสินค้า (เดโม)')">ลงขายสินค้าของฉัน</button></div>
+  <div class="rings"><div style="width:200px;height:200px;right:0;top:0"></div><div style="width:140px;height:140px;right:30px;top:30px;opacity:.7"></div><div style="width:80px;height:80px;right:60px;top:60px;background:var(--acc);border-color:var(--acc)"></div></div>
+ </div>
+</div></section>
+<footer><div class="wrap"><span>RELOOP – ตลาดของมือสอง (ต้นแบบ Frontend)</span><span>ข้อมูลสินค้าและผู้ขายเป็นข้อมูลจำลอง</span></div></footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
